@@ -1,0 +1,12 @@
+site_name: 'ISEN Cloud Awareness Training'
+nav:
+    - Prerequisites: prerequisites.md
+    - Docker Lab: docker.md
+    - Kubernetes Lab: kubernetes.md
+    # - Cloud Architecture Exercise: cloud-architecture.md
+    - Getting Started with AWS: aws.md
+    #- CI/CD Lab: cicd.md
+theme:
+  name: 'material'
+markdown_extensions:
+  - codehilite

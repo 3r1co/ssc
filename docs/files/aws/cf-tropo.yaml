@@ -1,0 +1,18 @@
+Mappings:
+  RegionMap:
+    ap-southeast-1:
+      AMI: 
+    eu-west-1:
+      AMI: 
+    us-east-1:
+      AMI: 
+Resources:
+  Ec2Instance:
+    Properties:
+      ImageId: !FindInMap
+        - RegionMap
+        - !Ref 'AWS::Region'
+        - AMI
+      InstanceType: t1.micro
+    Type: AWS::AutoScaling::LaunchConfiguration
+
