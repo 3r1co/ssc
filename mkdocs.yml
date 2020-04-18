@@ -6,8 +6,8 @@ nav:
     - Kubernetes Lab: kubernetes.md
     - Getting Started on Github: github.md
     - Github Actions: actions.md
+    - CI with Github Actions and Docker: ecr.md
     - Getting Started with AWS: aws.md
-    - CI with Github Actions and ECR: ecr.md
     - Cloudformation Deployment: cloudformation.md
     - Cloudformation Linting: cfn-nag.md
     - EKS Setup: eks.md
@@ -19,8 +19,7 @@ nav:
     - Jenkins CI Server: jenkins.md
     - Docker Security 1: kaniko.md
     - Docker Security 2: clair.md
-    - Kubernetes Security: network-policies.md 
-    #- CI/CD Lab: cicd.md
+    - Kubernetes Security: network-policies.md
 theme:
   name: 'material'
 markdown_extensions:

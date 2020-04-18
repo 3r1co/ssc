@@ -15,18 +15,25 @@ In this lab, you'll learn
 
 In this chapter, we'll explain you how to connect with the AWS CLI to your AWS Account.  
 
-1. Create a user in IAM that has administrator privileges like described [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
+1. In the AWS Edcuate console, click on "My Classrooms".
 
-1. Create a Access Key ID and Secret Access Key like described [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
+1. In the line of "Supply Chain Security", click on "Go to classroom".
+
+1. Confirm with "Continue".
+
+1. In the new window, click on "Account details".
+
+1. In the pop-up window, click on the "Show" button next to "AWS CLI:".
+
+1. Copy and paste the content in the shown box to `%HOME%/.aws/credentials`.
 
 1. In a terminal, type the following:  
 
         aws configure
 
-    - Enter the Access Key ID and Secret Access Key you retrieved earlier.  
-    - Enter `eu-west-1` as default region and leave the default output empty.  
+    - Enter `us-east-1` as default region and leave the default output empty.  
     
-    These credentials will be stored in `%HOME%/.aws/credentials`.
+    This information will be stored in `%HOME%/.aws/config`.
 
 1. Verify that you have access to the training account:
 

@@ -2,7 +2,9 @@
 
 Please follow the instructions on this page carefully, as they will help you avoiding obstacles in the next exercices.  
 
-The goal of the prerequisite step is to provide you a fully working development environment, containing Docker and Kubernetes.  
+The goal of the prerequisite step is to provide you a fully working development environment, containing Docker and Kubernetes.
+
+**Attention: If you are using Windows 10 or Mac, you can also use [Docker Desktop](https://www.docker.com/products/docker-desktop) in place of minikube. **
 
 In order to achieve that, you'll be guided through the following steps:
 

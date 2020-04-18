@@ -14,8 +14,8 @@ The course takes place over four days and intends to give students an overview o
 
 ## Day 2
 
+1. [CI with Github Actions and Docker](./ecr.md)
 1. [Getting Started with AWS](./aws.md)
-1. [CI with Github Actions and ECR](./ecr.md)
 1. [Cloudformation Deployment](./cloudformation.md)
 1. [Cloudformation Linting](./cfn-nag.md)
 1. [EKS setup](./eks.md)
