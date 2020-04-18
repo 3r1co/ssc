@@ -1,8 +1,8 @@
 # Static Code Analysis with PMD (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+Another tool to scan your source for vulnerabilities is **PMD**. It can be good to use several different source code scanners in order to find the maximum number of vulnerabilities and improve the quality of your code.
+
+There is already a Github Action available for PMD [here](https://github.com/marketplace/actions/pmd-source-code-analyzer-action).
+
+Your exercise is to integrate this tool into your Github workflow.
 

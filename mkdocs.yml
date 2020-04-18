@@ -13,8 +13,8 @@ nav:
     - EKS Setup: eks.md
     - Juice Shop: juice-shop.md
     - Static Code Analysis 1: sonar.md
-    - Static Code Analysis 2: dependency-check.md
-    - Static Code Analysis 3: pmd.md
+    - Static Code Analysis 2: pmd.md
+    - Static Code Analysis 3: dependency-check.md
     - Dynamic Application Security Scanning: arachni.md
     - Jenkins CI Server: jenkins.md
     - Docker Security 1: kaniko.md

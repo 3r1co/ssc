@@ -1,8 +1,10 @@
 # Dynamic Application Security Scanning (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+Until now you scanned your application in a static way, meaning you found vulnerabilties before an artifact was actually built.
+
+A complementary way to uncover weaknesses is the **Dynamic Application Security Scanning**, also known as DAST.
+
+One famous scanner is the OWASP ZAP Proxy.
+
+Your task is now to integrate the ZAP Proxy Github Action [here](https://github.com/zaproxy/action-baseline) in your Github workflow.
 

@@ -1,8 +1,16 @@
 # Docker Vulnerability Scanning with Clair (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+So far, we uncovered vulnerabilities in
+
+- your application source
+- third party libraries in your application
+- your infrastructure as code
+
+Another vulnerability factor can be the libraries that are integrated in your operating system, or in the case of Docker, your Docker image.
+
+A famous open source vulnerability scanner for Docker images [CoreOS Clair](https://github.com/quay/clair).
+
+For the purpose of this course, there is centralized Clair instance running at clair.3r1.co .
+
+Your task is now to perform a vulnerability scan of your Docker image with the [clair-scanner](https://github.com/arminc/clair-scanner).
 

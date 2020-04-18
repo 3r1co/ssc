@@ -24,8 +24,8 @@ The course takes place over four days and intends to give students an overview o
 
 1. [Juice Shop](./juice-shop.md)
 1. [Static Code Analysis with Sonar](./sonar.md)
-1. [Static Code Analysis with OWASP Dependency Check](./dependency-check.md)
 1. [Static Code Analysis with PMD](./pmd.md)
+1. [Static Code Analysis with OWASP Dependency Check](./dependency-check.md)
 1. [Dynamic Application Security Scanning](./arachni.md)
 
 ## Day 4

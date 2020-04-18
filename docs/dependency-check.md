@@ -1,8 +1,8 @@
 # Static Code Analysis with OWASP Dependency Check (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+After scanning your source code with Sonar, we now need to analyze the dependencies of your application, as they can also introduce vulnerabilities to your application.
+
+One very famous tool to do so is **OWASP Dependency Check**. There is already a Github Action available for this tool [here](https://github.com/Sburris/dependency-check-action).
+
+n this exercise, integrate this program into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.
 

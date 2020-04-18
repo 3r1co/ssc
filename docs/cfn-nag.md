@@ -1,8 +1,9 @@
 # Cloudformation Linting (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+As you saw in the presentation, all layers of your application must be properly secured. This what we call **Defense in Depth**.
 
+The lowest layer in a public cloud deployment is the infrastructure and in the case of AWS, we are deploying it through CloudFormation. There can be very common pitfalls when it comes to Infrastructure as Code, so it can be very advantageous to automate the scan for these.
+
+One very known tools is **cfn-nag**. There is already a Github Action available for this tool [here](https://github.com/marketplace/actions/cfn-nag-action). 
+
+In this exercise, integrate this lint program into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.

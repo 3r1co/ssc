@@ -1,8 +1,7 @@
 # Docker Security with Kaniko (1 hour)
 
-The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
-At the end of this lab, you have a CI/CD pipeline, that
-* checks out your application source code
-* builds a Docker image
-* deploys this Docker image to Kubernetes
+Interacting with the Docker engine directly through the `docker` command line tool can impose a significant security thread.
+
+In order to improve this risk and limit access to the Docker engine, there are several projects that allow building Docker images without a Docker engine. One of them is **kaniko**, which you will use to build and push a Docker image to ECR.
+
 

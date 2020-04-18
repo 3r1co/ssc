@@ -4,3 +4,8 @@ OWASP Juice Shop is probably the most modern and sophisticated insecure web appl
 
 In this lab, you will deploy the Juice Shop, which we will use in later tutorial to analyze weaknesses.
 
+To do so:
+
+1. Fork the following repository: https://github.com/bkimminich/juice-shop
+1. Create a Github Workflow that builds the Juice Shop image
+1. Deploy the previously built Juice Shop in your EKS cluster
