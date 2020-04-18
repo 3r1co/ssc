@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequisites (1 hour)
 
 Please follow the instructions on this page carefully, as they will help you avoiding obstacles in the next exercices.  
 

@@ -1,4 +1,4 @@
-# CI/CD Lab (30 Minutes)
+# Dynamic Application Security Scanning (1 hour)
 
 The goal of this exercise is to show you how to create a CI/CD Pipeline for containerized applications.  
 At the end of this lab, you have a CI/CD pipeline, that

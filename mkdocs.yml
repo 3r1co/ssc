@@ -1,12 +1,28 @@
-site_name: 'ISEN Cloud Awareness Training'
+site_name: 'ISEN Secure Supply Chain Course'
 nav:
+    - Home: 'README.md'
     - Prerequisites: prerequisites.md
     - Docker Lab: docker.md
     - Kubernetes Lab: kubernetes.md
-    # - Cloud Architecture Exercise: cloud-architecture.md
+    - Getting Started on Github: github.md
+    - Github Actions: actions.md
     - Getting Started with AWS: aws.md
+    - CI with Github Actions and ECR: ecr.md
+    - Cloudformation Deployment: cloudformation.md
+    - Cloudformation Linting: cfn-nag.md
+    - EKS Setup: eks.md
+    - Juice Shop: juice-shop.md
+    - Static Code Analysis 1: sonar.md
+    - Static Code Analysis 2: dependency-check.md
+    - Static Code Analysis 3: pmd.md
+    - Dynamic Application Security Scanning: arachni.md
+    - Jenkins CI Server: jenkins.md
+    - Docker Security 1: kaniko.md
+    - Docker Security 2: clair.md
+    - Kubernetes Security: network-policies.md 
     #- CI/CD Lab: cicd.md
 theme:
   name: 'material'
 markdown_extensions:
   - codehilite
+copyright: '&copy; 2020 Eric Muellenbach - eric (at) 3r1.co'

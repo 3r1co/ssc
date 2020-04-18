@@ -1,4 +1,4 @@
-# Docker Lab (30 Minutes)
+# Docker Lab (1 hour)
 
 The goal of this exercise is to build your first Docker container.
 At the end of the lab, you should have

@@ -7,6 +7,10 @@ In this lab, you'll learn
 * How to deploy this file in your Development environment
 * How to deliver this file through the Infrastructure Automation Pipeline to Production
 
+## Connect to AWS Educate
+
+1. Go to www.awseducate.com and log in with your ISEN E-Mail address. You should have already received an invitation.
+
 ## AWS Connection setup
 
 In this chapter, we'll explain you how to connect with the AWS CLI to your AWS Account.  

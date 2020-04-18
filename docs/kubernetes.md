@@ -1,4 +1,4 @@
-# Kubernetes Lab (30 Minutes)
+# Kubernetes Lab (1 hour)
 
 In this lab, you will deploy your previously created Docker image in Kubernetes.  
 The goal of this lab is to
