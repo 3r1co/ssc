@@ -1,9 +1,10 @@
-FROM python:alpine as mkdocs
+FROM python as mkdocs
 RUN pip install mkdocs mkdocs-material
 
-FROM mkdocs as builder
+WORKDIR /src
+
 ADD . .
 RUN mkdocs build
 
 FROM nginx:alpine
-COPY --from=builder ${APP_VAR}/site/ /var/www/html
+COPY --from=mkdocs /src/site/ /usr/share/nginx/html 
