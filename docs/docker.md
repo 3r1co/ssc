@@ -24,8 +24,8 @@ To perform this lab:
    
 1. Open the previously downloaded file "Dockerfile" in an editor:
     
-    - the first line states `FROM alpine:3.10`
-        - In case you wouldn't specify a tag (:3.10), Docker will default to "latest". It is a common best-practice to always specify a tag when referencing to an image.
+    - the first line states `FROM node:alpine`
+        - In case you wouldn't specify a tag (:alpine), Docker will default to "latest". It is a common best-practice to always specify a tag when referencing to an image.
     - you'll also see one line stating `ADD app.js /usr/local/bin`
         - In this step the source code of your Node.JS server is added into `/usr/local/bin/` directory
     - you'll also a line with the statement `ENTRYPOINT`. The entrypoint is the command that is run on your Docker container with the it is launched with the `docker run` command.
