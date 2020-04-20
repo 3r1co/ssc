@@ -67,6 +67,9 @@ To perform this lab:
     
             eval(minikube docker-env)
 
+        or
+            eval $(minikube docker-env)
+
 1. Verify that you can access the Docker CLI:  
 
         docker info
