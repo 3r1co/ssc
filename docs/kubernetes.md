@@ -92,11 +92,11 @@ You can find the associated port number by typing:
 		spec:
 		containers:
 		- image: mywebserver:1.0
-			imagePullPolicy: IfNotPresent
-			name: webserver
-			env:
-			- name: GREETING
-			  value: "I'm configured now"
+	      imagePullPolicy: IfNotPresent
+		  name: webserver
+		  env:
+		  - name: GREETING
+			value: "I'm configured now"
 
 1. Refresh your browser, and see how to greeting changed.
 

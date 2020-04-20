@@ -69,7 +69,7 @@ To perform this lab:
         docker tag mywebserver:1.0 <username>/mywebserver:1.0 
         docker push <username>/mywebserver:1.0
 
-        **Attention: For this to work, you will need an account on hub.docker.com**
+    **Attention: For this to work, you will need an account on hub.docker.com**
 
 1. You can now stop your container (with the id of the container that was returned to you when you ran it)  
 
