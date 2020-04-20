@@ -96,7 +96,7 @@ You can find the associated port number by typing:
 			name: webserver
 			env:
 			- name: GREETING
-			value: "I'm configured now"
+			  value: "I'm configured now"
 
 1. Refresh your browser, and see how to greeting changed.
 
