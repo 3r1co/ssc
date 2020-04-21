@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: isen
+  name: isen-2
   region: us-east-1
 
 vpc:

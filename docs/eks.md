@@ -30,5 +30,3 @@ You'll need to extend your workflow with the following lines:
     sed -i "s/IMAGE_TAG/sha-$(git rev-parse --short HEAD)/g" kustomization.yaml
     aws eks update-kubeconfig --name isen
     kubectl kustomize . | kubectl apply -f -
-
-And modify the kustomization.yaml to add your 
