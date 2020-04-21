@@ -16,3 +16,15 @@ After the installation, please download the following file:
 You can then instantiate an EKS cluster by simply executing the following command:
 
 `eksctl create cluster -f cluster.yaml`
+
+After the cluster installation, it's time to extend your Github Actions workflow to launch a deployment in Kubernetes.
+
+For this, please download the following files and place them in your repository:
+
+- [kustomization.yaml](./files/kubernetes/kustomization.yaml)
+- [deployment.yaml](./files/kubernetes/deployment.yaml)
+
+You'll need to extend your workflow with the following lines:
+
+    aws eks update-kubeconfig --name isen
+    kubectl kustomize . | kubectl apply -f -
