@@ -17,6 +17,7 @@ The course takes place over four days and intends to give students an overview o
 
 1. [Getting Started with AWS](./aws.md)
 1. [Cloudformation Deployment](./cloudformation.md)
+1. [Deploy Containers with ECS](./ecs.md)
 1. [Cloudformation Linting](./cfn-nag.md)
 1. [EKS setup](./eks.md)
 

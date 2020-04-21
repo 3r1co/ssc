@@ -9,6 +9,7 @@ nav:
     - CI with Github Actions and Docker: ecr.md
     - Getting Started with AWS: aws.md
     - Cloudformation Deployment: cloudformation.md
+    - Deploy Containers with ECS: ecs.md
     - Cloudformation Linting: cfn-nag.md
     - EKS Setup: eks.md
     - Juice Shop: juice-shop.md
