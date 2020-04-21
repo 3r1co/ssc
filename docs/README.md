@@ -11,10 +11,10 @@ The course takes place over four days and intends to give students an overview o
 1. [Kubernetes Lab](./kubernetes.md)
 1. [Getting Started on Github](./github.md)
 1. [Github Actions](./actions.md)
+1. [CI with Github Actions and Docker](./ecr.md)
 
 ## Day 2
 
-1. [CI with Github Actions and Docker](./ecr.md)
 1. [Getting Started with AWS](./aws.md)
 1. [Cloudformation Deployment](./cloudformation.md)
 1. [Cloudformation Linting](./cfn-nag.md)
