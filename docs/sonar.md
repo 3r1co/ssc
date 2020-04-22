@@ -1,4 +1,4 @@
-# Static Code Analysis with Sonar (1 hour)
+# Static Code Analysis with Sonar and PMD (1 hour)
 
 The first thing you need to scan in your application is your actual source code.
 
