@@ -19,22 +19,25 @@ The course takes place over four days and intends to give students an overview o
 1. [Cloudformation Deployment](./cloudformation.md)
 1. [Deploy Containers with ECS](./ecs.md)
 1. [Cloudformation Linting](./cfn-nag.md)
-1. [EKS setup](./eks.md)
+1. [EKS deployment](./eks.md)
 
 ## Day 3
 
 1. [Juice Shop](./juice-shop.md)
-1. [Static Code Analysis with Sonar](./sonar.md)
-1. [Static Code Analysis with PMD](./pmd.md)
-1. [Static Code Analysis with OWASP Dependency Check](./dependency-check.md)
-1. [Dynamic Application Security Scanning](./arachni.md)
+1. [Static Code Analysis](./sonar.md)
+1. [3rd Party Dependency Check](./dependency-check.md)
+1. [Container Vulnerability Scanning](./clair.md)
+1. [Dynamic Application Security Scanning](./zapproxy.md)
+
 
 ## Day 4
 
+1. [Write your own Gitub Action](./arachni.md)
 1. [Jenkins CI Server](./jenkins.md)
-1. [Docker Security 1](./kaniko.md)
-1. [Docker Security 2](./clair.md)
-1. [Kubernetes Security](./network-policies.md)
+1. [Docker Security](./kaniko.md)
+1. [Kubernetes Pod Security](./pod-policies.md)
+1. [Kubernetes Network Security](./network-policies.md)
+1. [DefectDojo](./defectdojo.md)
 
 
 

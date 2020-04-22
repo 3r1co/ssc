@@ -4,5 +4,5 @@ After scanning your source code with Sonar, we now need to analyze the dependenc
 
 One very famous tool to do so is **OWASP Dependency Check**. There is already a Github Action available for this tool [here](https://github.com/Sburris/dependency-check-action).
 
-n this exercise, integrate this program into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.
+In this exercise, integrate this program into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.
 

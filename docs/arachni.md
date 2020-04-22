@@ -1,10 +1,6 @@
 # Dynamic Application Security Scanning (1 hour)
 
-Until now you scanned your application in a static way, meaning you found vulnerabilties before an artifact was actually built.
+Similar to ZAP Proxy, [Arachni](https://www.arachni-scanner.com) is a DAST tool that is intended to run on the command line.
 
-A complementary way to uncover weaknesses is the **Dynamic Application Security Scanning**, also known as DAST.
-
-One famous scanner is the OWASP ZAP Proxy.
-
-Your task is now to integrate the ZAP Proxy Github Action [here](https://github.com/zaproxy/action-baseline) in your Github workflow.
+Unfortunately, there is no Github Action available for this tool, so your task today is to write your own Github Action, including Arachni and performing a scan on your application.
 

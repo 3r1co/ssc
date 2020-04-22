@@ -13,14 +13,16 @@ nav:
     - Cloudformation Linting: cfn-nag.md
     - EKS Setup: eks.md
     - Juice Shop: juice-shop.md
-    - Static Code Analysis 1: sonar.md
-    - Static Code Analysis 2: pmd.md
-    - Static Code Analysis 3: dependency-check.md
-    - Dynamic Application Security Scanning: arachni.md
+    - Static Code Analysis: sonar.md
+    - 3rd Party Dependency Check: dependency-check.md
+    - Container Vulnerability Scanning with Clair: clair.md
+    - Dynamic Application Security Scanning: zapproxy.md
+    - Write your own Github Action: arachni.md
     - Jenkins CI Server: jenkins.md
-    - Docker Security 1: kaniko.md
-    - Docker Security 2: clair.md
-    - Kubernetes Security: network-policies.md
+    - Docker Security: kaniko.md
+    - Kubernetes Pod Security: pod-policies.md
+    - Kubernetes Network Security: network-policies.md
+    - DefectDojo: defectdojo.md
 theme:
   name: 'material'
 markdown_extensions:
