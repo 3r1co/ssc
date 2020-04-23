@@ -6,3 +6,9 @@ One very famous tool to do so is **OWASP Dependency Check**. There is already a 
 
 In this exercise, integrate this program into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.
 
+Attention: You will have to install the Node.JS dependencies before running the actual dependency check. You can do this by adding the following lines to your workflow after the checkout action:
+
+    - uses: actions/checkout@v2
+    - name: Install NPM dependencies
+      run: |
+        npm install --production --unsafe-perm
