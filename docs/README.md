@@ -34,9 +34,9 @@ The course takes place over four days and intends to give students an overview o
 
 1. [Write your own Gitub Action](./arachni.md)
 1. [Jenkins CI Server](./jenkins.md)
-1. [Docker Security](./kaniko.md)
-1. [Kubernetes Pod Security](./pod-policies.md)
-1. [Kubernetes Network Security](./network-policies.md)
+1. [Build Docker with Jenkins and Kaniko](./kaniko.md)
+1. [Kubernetes Pod Security Policies](./pod-policies.md)
+1. [Kubernetes Network Security Policies](./network-policies.md)
 1. [DefectDojo](./defectdojo.md)
 
 

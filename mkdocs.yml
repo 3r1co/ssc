@@ -19,9 +19,9 @@ nav:
     - Dynamic Application Security Scanning: zapproxy.md
     - Write your own Github Action: arachni.md
     - Jenkins CI Server: jenkins.md
-    - Docker Security: kaniko.md
-    - Kubernetes Pod Security: pod-policies.md
-    - Kubernetes Network Security: network-policies.md
+    - Build Docker with Jenkins and Kaniko: kaniko.md
+    - Kubernetes Pod Security Policies: pod-policies.md
+    - Kubernetes Network Policies: network-policies.md
     - DefectDojo: defectdojo.md
 theme:
   name: 'material'
