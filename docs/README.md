@@ -29,7 +29,6 @@ The course takes place over four days and intends to give students an overview o
 1. [Container Vulnerability Scanning](./clair.md)
 1. [Dynamic Application Security Scanning](./zapproxy.md)
 
-
 ## Day 4
 
 1. [Write your own Gitub Action](./arachni.md)
