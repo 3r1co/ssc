@@ -9,6 +9,7 @@ For this tutorial, you need to create an account on [sonarcloud.io](https://sona
 
 In this exercise, integrate this action into your Github workflow and do the validation before you actually deploy resources in AWS. Also, fix all issues that are reported through the scanner.
 
+---
 
 Another tool to scan your source for vulnerabilities is **PMD**. It can be good to use several different source code scanners in order to find the maximum number of vulnerabilities and improve the quality of your code.
 
