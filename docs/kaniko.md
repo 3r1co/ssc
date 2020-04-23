@@ -12,6 +12,22 @@ As the setup will be rather complex, before we begin, please have a look at the 
 
 To do so, please follow these steps:
 
+1. Create an ECR Repository
+
+    1. Go to the AWS Console and open the ECR menu
+    1. Click on "Create repository"
+    1. Enter "sample-microservice" and click on "Create Repository"
+    
+1. Add new permissions to your EKS Node Group
+
+    1. Go to the AWS Console and open the IAM menu
+    1. Go to Roles
+    1. Search for "NodeInstanceRole"
+    1. Select the NodeInstanceRole and click the button "Attach policies"
+    1. Search for "Container"
+    1. Check "AmazonEC2ContainerRegistryPowerUser"
+    1. Click on "Attach Policy"
+
 1. Create an IAM Role for your Jenkins EC2 Instance
     
     1. Go to your AWS Console and open the IAM menu
@@ -24,12 +40,70 @@ To do so, please follow these steps:
     1. Go to the EC2 menu
     1. Select your Jenkins EC2 instance and click on "Actions" -> "Instance Settings" -> "Attach/Replace IAM Role" and select the previously created role from the drop-down menu.
 
-1. Install the Jenkins Kubernetes Plugin
 1. Update the aws-auth ConfigMap in your EKS cluster
+
+    1. From your workstation, enter the following command:
+        
+            kubectl edit cm aws-auth -n kube-system
+        
+        and add the following entry to the mapRoles section:
+
+                - groups:
+                    - system:masters
+                  rolearn: arn:aws:iam::XXXXXXXXXXXX:role/role-jenkins-master
+                  username: system:node:{{EC2PrivateDNSName}} 
+
+        where XX... is your AWS Account ID
+
 1. Update your Jenkins Security Group
+
+    1. In the EC2 Console, open the security group that you assigned to your Jenkins EC2 Instance
+    1. Allow requests on port **8080** and **50000** from anywhere (Attention, this is not best practice and we only do this for the purpose of the course)
 1. Create a new kubeconfig and upload it to the Jenkins Kubernetes Plugin
-1. Add permissions to NodeGroup role
-1. Create docker-config configmap
+
+    1. In your workstation, enter the following command:
+
+            aws eks update-kubeconfig --kubeconfig config-for-jenkins --name isen
+
+        A new file with the name "config-for-jenkins" will be created in your current directory. You'll need it in the next step.
+1. Install the Jenkins Kubernetes Plugin
+
+    1. In your Jenkins, go to "Settings" and select "Manage plugins".
+    1. Click on the tab "Available" and search for "Kubernetes plugin"
+    1. Check it and click "Install". In the next screen, select to restart Jenkins after installation.
+
+1. Configure the Kubernetes Plugin
+
+    1. In Jenkins, go "Settings" and select "Manage nodes"
+    1. Click on "Configure Clouds"
+    1. Click on "Add cloud" and select "Kubernetes".
+    1. Click on "Kubernetes Cloud details..."
+    1. In Kubernetes namespace, enter "default"
+    1. Next to Credentials, click on "Add" and select "Jenkins".
+    1. As Kind, choose "Secret file" and in the file row, upload the file `config-for-jenkins` file that you created in step 5
+    1. Confirm with "Add" and choose the uploaded file as credential.
+    1. Click on "Save".
+
+1. Create a docker-config ConfigMap in Kubernetes
+
+    1. Save the following file as `docker-config.yaml` on your PC:
+
+            apiVersion: v1
+            kind: ConfigMap
+            metadata:
+            name: docker-config
+            data:
+            config.json: |-
+                {
+                "credHelpers": {
+                    "XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com": "ecr-login"
+                }
+                }
+        
+    1. Replace XX... with your AWS Account ID
+    1. Create this file in your Kubernetes cluster by entering:
+
+            kubectl create -f docker-config.yaml
 
 After all these steps are done, you can create a pipeline with the example below:
 
@@ -73,4 +147,4 @@ After all these steps are done, you can create a pipeline with the example below
     }
     }
 
-Please replace mydockerregistry:5000 with XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com , where XX... represents your AWS Account ID.
+Please replace XX... with your AWS Account ID.
