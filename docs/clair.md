@@ -14,3 +14,11 @@ For the purpose of this course, there is centralized Clair instance running at c
 
 Your task is now to perform a vulnerability scan of your Docker image with [klar](https://github.com/optiopay/klar/releases).
 
+Here a way to run the clair scan:
+
+    - name: use klar
+      run: |
+        wget https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64 -O klar
+        chmod +x klar
+        CLAIR_ADDR=http://clair.3r1.co:6060 ./klar docker.io/<your-username>/<your-image>:<sha-tag>
+
