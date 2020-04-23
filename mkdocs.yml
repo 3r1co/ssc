@@ -20,7 +20,7 @@ nav:
     - Write your own Github Action: arachni.md
     - Jenkins CI Server: jenkins.md
     - Build Docker with Jenkins and Kaniko: kaniko.md
-    - Kubernetes Pod Security Policies: pod-policies.md
+    - Kubernetes Pod Security Policies: psp.md
     - Kubernetes Network Policies: network-policies.md
     - DefectDojo: defectdojo.md
 theme:
