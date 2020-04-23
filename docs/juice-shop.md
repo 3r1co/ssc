@@ -6,6 +6,7 @@ In this lab, you will deploy the Juice Shop, which we will use in later tutorial
 
 To do so:
 
-1. Fork the following repository: https://github.com/bkimminich/juice-shop
-1. Create a Github Workflow that builds the Juice Shop image
+1. Fork [this](https://github.com/bkimminich/juice-shop) repository.
+1. Create a Github Workflow that builds the Juice Shop image and pushes it to docker.io
 1. Deploy the previously built Juice Shop in your EKS cluster
+    - Use the files `customization.yaml` and `deployment.yaml` from your previous exercise and adapt the image name
