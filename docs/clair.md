@@ -12,5 +12,5 @@ A famous open source vulnerability scanner for Docker images [CoreOS Clair](http
 
 For the purpose of this course, there is centralized Clair instance running at clair.3r1.co .
 
-Your task is now to perform a vulnerability scan of your Docker image with the [clair-scanner](https://github.com/arminc/clair-scanner).
+Your task is now to perform a vulnerability scan of your Docker image with [klar](https://github.com/optiopay/klar/releases).
 
