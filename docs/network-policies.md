@@ -1,4 +1,4 @@
-# Kubernetes Network Policies (1 hour)
+# Kubernetes Network Policies (30 minutes)
 
 As you saw throughout the course, Kubernetes separates projects through the notion of __namespaces__.
 
