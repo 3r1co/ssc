@@ -92,7 +92,7 @@ To do so, please follow these steps:
 
     1. In Jenkins, go "Settings" and select "Global Security Settings".
     1. In the section "Agents", select the "Fixed" option and enter 50000 as value.
-    
+
 1. Create a docker-config ConfigMap in Kubernetes
 
     1. Save the following file as `docker-config.yaml` on your PC:
@@ -125,19 +125,19 @@ After all these steps are done, you can create a pipeline with the example below
     metadata:
     name: kaniko
     spec:
-    containers:
-    - name: kaniko
-        image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
-        imagePullPolicy: Always
-        command:
-        - cat
-        tty: true
-        volumeMounts:
+      containers:
+        - name: kaniko
+            image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
+            imagePullPolicy: Always
+            command:
+            - cat
+            tty: true
+            volumeMounts:
+            - name: docker-config
+                mountPath: /kaniko/.docker
+      volumes:
         - name: docker-config
-            mountPath: /kaniko/.docker
-    volumes:
-        - name: docker-config
-        configMap:
+          configMap:
             name: docker-config
     """
         }
