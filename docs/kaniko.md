@@ -12,9 +12,9 @@ As the setup will be rather complex, before we begin, please have a look at the 
 
 To do so, please follow these steps:
 
-1. Create an ECR Repository
+1. Create an Elastic Container Repository Repository
 
-    1. Go to the AWS Console and open the ECR menu
+    1. Go to the AWS Console and open the ECR menu (by searching for Elastic Container Registry)
     1. Click on "Create repository"
     1. Enter "juice-shop" and click on "Create Repository"
     
