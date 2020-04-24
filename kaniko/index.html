@@ -1,0 +1,748 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+    
+      
+        <title>Build Docker with Jenkins and Kaniko - ISEN Secure Supply Chain Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.89dc9fe3.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker-security-with-kaniko-1-hour" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="ISEN Secure Supply Chain Course" class="md-header-nav__button md-logo" aria-label="ISEN Secure Supply Chain Course">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ISEN Secure Supply Chain Course
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Build Docker with Jenkins and Kaniko
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ISEN Secure Supply Chain Course" class="md-nav__button md-logo" aria-label="ISEN Secure Supply Chain Course">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    ISEN Secure Supply Chain Course
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../prerequisites/" title="Prerequisites" class="md-nav__link">
+      Prerequisites
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docker/" title="Docker Lab" class="md-nav__link">
+      Docker Lab
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../kubernetes/" title="Kubernetes Lab" class="md-nav__link">
+      Kubernetes Lab
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../github/" title="Getting Started on Github" class="md-nav__link">
+      Getting Started on Github
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../actions/" title="Github Actions" class="md-nav__link">
+      Github Actions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ecr/" title="CI with Github Actions and Docker" class="md-nav__link">
+      CI with Github Actions and Docker
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../aws/" title="Getting Started with AWS" class="md-nav__link">
+      Getting Started with AWS
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cloudformation/" title="Cloudformation Deployment" class="md-nav__link">
+      Cloudformation Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ecs/" title="Deploy Containers with ECS" class="md-nav__link">
+      Deploy Containers with ECS
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cfn-nag/" title="Cloudformation Linting" class="md-nav__link">
+      Cloudformation Linting
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../eks/" title="EKS Setup" class="md-nav__link">
+      EKS Setup
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../juice-shop/" title="Juice Shop" class="md-nav__link">
+      Juice Shop
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sonar/" title="Static Code Analysis" class="md-nav__link">
+      Static Code Analysis
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../dependency-check/" title="3rd Party Dependency Check" class="md-nav__link">
+      3rd Party Dependency Check
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../clair/" title="Container Vulnerability Scanning with Clair" class="md-nav__link">
+      Container Vulnerability Scanning with Clair
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../zapproxy/" title="Dynamic Application Security Scanning" class="md-nav__link">
+      Dynamic Application Security Scanning
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../arachni/" title="Write your own Github Action" class="md-nav__link">
+      Write your own Github Action
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../jenkins/" title="Jenkins CI Server" class="md-nav__link">
+      Jenkins CI Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Build Docker with Jenkins and Kaniko" class="md-nav__link md-nav__link--active">
+      Build Docker with Jenkins and Kaniko
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../psp/" title="Kubernetes Pod Security Policies" class="md-nav__link">
+      Kubernetes Pod Security Policies
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../network-policies/" title="Kubernetes Network Policies" class="md-nav__link">
+      Kubernetes Network Policies
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../defectdojo/" title="DefectDojo" class="md-nav__link">
+      DefectDojo
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="docker-security-with-kaniko-1-hour">Docker Security with Kaniko (1 hour)</h1>
+<p>Interacting with the Docker engine directly through the <code>docker</code> command line tool can impose a significant security thread.</p>
+<p>In order to improve this risk and limit access to the Docker engine, there are several projects that allow building Docker images without a Docker engine. One of them is <strong>kaniko</strong>, which you will use to build and push a Docker image to ECR.</p>
+<p>We will use Jenkins and our previously created EKS cluster in order to build highly secure and scalable build system.</p>
+<p>As the setup will be rather complex, before we begin, please have a look at the following graphic that will visualize our final setup:</p>
+<p><img alt="Kaniko Setup" src="../files/kubernetes/kaniko-setup.png" /></p>
+<p>To do so, please follow these steps:</p>
+<ol>
+<li>
+<p>Create an Elastic Container Repository Repository</p>
+<ol>
+<li>Go to the AWS Console and open the ECR menu (by searching for Elastic Container Registry)</li>
+<li>Click on "Create repository"</li>
+<li>Enter "juice-shop" and click on "Create Repository"</li>
+</ol>
+</li>
+<li>
+<p>Add new permissions to your EKS Node Group</p>
+<ol>
+<li>Go to the AWS Console and open the IAM menu</li>
+<li>Go to Roles</li>
+<li>Search for "NodeInstanceRole"</li>
+<li>Select the NodeInstanceRole and click the button "Attach policies"</li>
+<li>Search for "Container"</li>
+<li>Check "AmazonEC2ContainerRegistryPowerUser"</li>
+<li>Click on "Attach Policy"</li>
+</ol>
+</li>
+<li>
+<p>Create an IAM Role for your Jenkins EC2 Instance</p>
+<ol>
+<li>Go to your AWS Console and open the IAM menu</li>
+<li>Go to Roles</li>
+<li>Click on "Create role"</li>
+<li>Click on "EC2" and confirm with "Next: Permissions"</li>
+<li>Click on "Next: Tags"</li>
+<li>Click on "Next: Review"</li>
+<li>Give it the name "role-jenkins-master"</li>
+<li>Go to the EC2 menu</li>
+<li>Select your Jenkins EC2 instance and click on "Actions" -&gt; "Instance Settings" -&gt; "Attach/Replace IAM Role" and select the previously created role from the drop-down menu.</li>
+</ol>
+</li>
+<li>
+<p>Update the aws-auth ConfigMap in your EKS cluster</p>
+<ol>
+<li>
+<p>From your workstation, enter the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">kubectl edit cm aws-auth -n kube-system</span>
+</code></pre></div>
+
+
+<p>and add the following entry to the mapRoles section:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">    - groups:</span>
+<span class="x">        - system:masters</span>
+<span class="x">      rolearn: arn:aws:iam::XXXXXXXXXXXX:role/role-jenkins-master</span>
+<span class="x">      username: system:node:</span><span class="cp">{{</span><span class="nv">EC2PrivateDNSName</span><span class="cp">}}</span><span class="x"></span>
+</code></pre></div>
+
+
+<p>where XX... is your AWS Account ID</p>
+<p>For your information, the AWS Account ID can be found in the IAM Menu on the bottom left corner, where it's written "AWS account ID" (a 12 digit number).</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Update your Jenkins Security Group</p>
+<ol>
+<li>In the EC2 Console, open the security group that you assigned to your Jenkins EC2 Instance</li>
+<li>Allow requests on port <strong>8080</strong> and <strong>50000</strong> from anywhere (Attention, this is not best practice and we only do this for the purpose of the course)</li>
+</ol>
+</li>
+<li>
+<p>Create a new kubeconfig and upload it to the Jenkins Kubernetes Plugin</p>
+<ol>
+<li>
+<p>In your workstation, enter the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">aws eks update-kubeconfig --kubeconfig config-for-jenkins --name isen</span>
+</code></pre></div>
+
+
+<p>A new file with the name "config-for-jenkins" will be created in your current directory. You'll need it in the next step.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Install the Jenkins Kubernetes Plugin</p>
+<ol>
+<li>In your Jenkins, go to "Settings" and select "Manage plugins".</li>
+<li>Click on the tab "Available" and search for "Kubernetes plugin"</li>
+<li>Check it and click "Install". In the next screen, select to restart Jenkins after installation.</li>
+</ol>
+</li>
+<li>
+<p>Configure the Kubernetes Plugin</p>
+<ol>
+<li>In Jenkins, go "Settings" and select "Manage nodes"</li>
+<li>Click on "Configure Clouds"</li>
+<li>Click on "Add cloud" and select "Kubernetes".</li>
+<li>Click on "Kubernetes Cloud details..."</li>
+<li>In Kubernetes namespace, enter "default"</li>
+<li>Next to Credentials, click on "Add" and select "Jenkins".</li>
+<li>As Kind, choose "Secret file" and in the file row, upload the file <code>config-for-jenkins</code> file that you created in step 5</li>
+<li>Confirm with "Add" and choose the uploaded file as credential.</li>
+<li>Check the field "Direct connection".</li>
+<li>Click on "Save".</li>
+</ol>
+</li>
+<li>
+<p>Configure the Jenkins Agent Port</p>
+<ol>
+<li>In Jenkins, go "Settings" and select "Global Security Settings".</li>
+<li>In the section "Agents", select the "Fixed" option and enter 50000 as value.</li>
+</ol>
+</li>
+<li>
+<p>Create a docker-config ConfigMap in Kubernetes</p>
+<ol>
+<li>
+<p>Save the following file as <code>docker-config.yaml</code> on your PC:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">apiVersion</span><span class="o">:</span> <span class="n">v1</span>
+<span class="n">kind</span><span class="o">:</span> <span class="n">ConfigMap</span>
+<span class="n">metadata</span><span class="o">:</span>
+<span class="n">name</span><span class="o">:</span> <span class="n">docker</span><span class="o">-</span><span class="n">config</span>
+<span class="n">data</span><span class="o">:</span>
+<span class="n">config</span><span class="o">.</span><span class="na">json</span><span class="o">:</span> <span class="o">|-</span>
+    <span class="o">{</span>
+    <span class="s2">&quot;credHelpers&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s2">&quot;XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com&quot;</span><span class="o">:</span> <span class="s2">&quot;ecr-login&quot;</span>
+    <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>Replace XX... with your AWS Account ID</p>
+</li>
+<li>Create this file in your Kubernetes cluster by entering:<div class="codehilite"><pre><span></span><code><span class="err">kubectl create -f docker-config.yaml</span>
+</code></pre></div>
+
+
+</li>
+</ol>
+</li>
+</ol>
+<p>After all these steps are done, you can create a pipeline with the example below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pipeline</span> <span class="err">{</span>
+<span class="n">agent</span> <span class="err">{</span>
+    <span class="n">kubernetes</span> <span class="err">{</span>
+    <span class="o">//</span><span class="n">cloud</span> <span class="s1">&#39;kubernetes&#39;</span>
+    <span class="n">yaml</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">kind: Pod</span>
+<span class="s2">metadata:</span>
+<span class="s2">name: kaniko</span>
+<span class="s2">spec:</span>
+<span class="s2">  containers:</span>
+<span class="s2">    - name: kaniko</span>
+<span class="s2">        image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251</span>
+<span class="s2">        imagePullPolicy: Always</span>
+<span class="s2">        command:</span>
+<span class="s2">        - cat</span>
+<span class="s2">        tty: true</span>
+<span class="s2">        volumeMounts:</span>
+<span class="s2">        - name: docker-config</span>
+<span class="s2">            mountPath: /kaniko/.docker</span>
+<span class="s2">  volumes:</span>
+<span class="s2">    - name: docker-config</span>
+<span class="s2">      configMap:</span>
+<span class="s2">        name: docker-config</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+<span class="n">stages</span> <span class="err">{</span>
+    <span class="nf">stage</span><span class="p">(</span><span class="s1">&#39;Build with Kaniko&#39;</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">steps</span> <span class="err">{</span>
+        <span class="n">git</span> <span class="s1">&#39;https://github.com/&lt;your-github-username&gt;/juice-shop&#39;</span>
+        <span class="nf">container</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;kaniko&#39;</span><span class="p">)</span> <span class="err">{</span>
+            <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/juice-shop:latest --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/juice-shop:v$BUILD_NUMBER</span>
+<span class="s1">            &#39;&#39;&#39;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>Please replace XX... with your AWS Account ID.</p>
+<hr />
+<p>Bonus task: Deploy this new container image in your EKS cluster.</p>
+<p>Files that you need to deploy (with <code>kubectl apply -f &lt;file.yaml&gt;</code>):</p>
+<ul>
+<li><a href="../files/eks/role.yaml">role.yaml</a></li>
+<li><a href="../files/eks/role-binding.yaml">role-binding.yaml</a></li>
+</ul>
+<p>You need to replace your pipeline to take the deployment into account. An example pipeline can be found here:</p>
+<ul>
+<li><a href="../files/eks/pipeline.groovy">pipeline.groovy</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../jenkins/" title="Jenkins CI Server" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Jenkins CI Server
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../psp/" title="Kubernetes Pod Security Policies" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Kubernetes Pod Security Policies
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2020 Eric Muellenbach - eric (at) 3r1.co
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
