@@ -36,8 +36,7 @@ spec:
         git 'https://github.com/3r1co/juice-shop'
         container(name: 'kaniko') {
             sh '''
-            #/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=542954954204.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:latest --destination=542954954204.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:v$BUILD_NUMBER
-            echo "Skipping build"
+            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=542954954204.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:latest --destination=542954954204.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:v$BUILD_NUMBER
             '''
         }
         container(name: 'alpine') {
