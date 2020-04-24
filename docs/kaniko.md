@@ -88,6 +88,11 @@ To do so, please follow these steps:
     1. Confirm with "Add" and choose the uploaded file as credential.
     1. Click on "Save".
 
+1. Configure the Jenkins Agent Port
+
+    1. In Jenkins, go "Settings" and select "Global Security Settings".
+    1. In the section "Agents", select the "Fixed" option and enter 50000 as value.
+    
 1. Create a docker-config ConfigMap in Kubernetes
 
     1. Save the following file as `docker-config.yaml` on your PC:
