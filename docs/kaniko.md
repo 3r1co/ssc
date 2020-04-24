@@ -55,6 +55,8 @@ To do so, please follow these steps:
 
         where XX... is your AWS Account ID
 
+        For your information, the AWS Account ID can be found in the IAM Menu on the bottom left corner, where it's written "AWS account ID" (a 12 digit number).
+
 1. Update your Jenkins Security Group
 
     1. In the EC2 Console, open the security group that you assigned to your Jenkins EC2 Instance
