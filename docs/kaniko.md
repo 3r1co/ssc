@@ -86,6 +86,7 @@ To do so, please follow these steps:
     1. Next to Credentials, click on "Add" and select "Jenkins".
     1. As Kind, choose "Secret file" and in the file row, upload the file `config-for-jenkins` file that you created in step 5
     1. Confirm with "Add" and choose the uploaded file as credential.
+    1. Check the field "Direct connection".
     1. Click on "Save".
 
 1. Configure the Jenkins Agent Port
