@@ -167,3 +167,7 @@ Files that you need to deploy (with `kubectl apply -f <file.yaml>`):
 
 - [role.yaml](./files/eks/role.yaml)
 - [role-binding.yaml](./files/eks/role-binding.yaml)
+
+You need to replace your pipeline to take the deployment into account. An example pipeline can be found here:
+
+- [pipeline.groovy](./files/eks/pipeline.groovy)

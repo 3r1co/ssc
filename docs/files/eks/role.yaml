@@ -5,5 +5,5 @@ metadata:
   name: deployment-manager
 rules:
 - apiGroups: ["", "extensions", "apps"]
-  resources: ["deployments", "replicasets", "pods"]
+  resources: ["deployments", "replicasets", "pods", "services"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
