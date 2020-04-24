@@ -16,7 +16,7 @@ To do so, please follow these steps:
 
     1. Go to the AWS Console and open the ECR menu
     1. Click on "Create repository"
-    1. Enter "sample-microservice" and click on "Create Repository"
+    1. Enter "juice-shop" and click on "Create Repository"
     
 1. Add new permissions to your EKS Node Group
 
@@ -136,10 +136,10 @@ After all these steps are done, you can create a pipeline with the example below
     stages {
         stage('Build with Kaniko') {
         steps {
-            git 'https://github.com/prabhatsharma/sample-microservice'
+            git 'https://github.com/<your-github-username>/juice-shop'
             container(name: 'kaniko') {
                 sh '''
-                /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:latest --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/sample-microservice:v$BUILD_NUMBER
+                /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/juice-shop:latest --destination=XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/juice-shop:v$BUILD_NUMBER
                 '''
             }
         }
