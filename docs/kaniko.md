@@ -162,3 +162,8 @@ Please replace XX... with your AWS Account ID.
 ---
 
 Bonus task: Deploy this new container image in your EKS cluster.
+
+Files that you need to deploy (with `kubectl apply -f <file.yaml>`):
+
+- [role.yaml](./files/eks/role.yaml)
+- [role-binding.yaml](./files/eks/role-binding.yaml)
