@@ -61,6 +61,7 @@ To do so, please follow these steps:
 
     1. In the EC2 Console, open the security group that you assigned to your Jenkins EC2 Instance
     1. Allow requests on port **8080** and **50000** from anywhere (Attention, this is not best practice and we only do this for the purpose of the course)
+
 1. Create a new kubeconfig and upload it to the Jenkins Kubernetes Plugin
 
     1. In your workstation, enter the following command:
@@ -68,6 +69,7 @@ To do so, please follow these steps:
             aws eks update-kubeconfig --kubeconfig config-for-jenkins --name isen
 
         A new file with the name "config-for-jenkins" will be created in your current directory. You'll need it in the next step.
+
 1. Install the Jenkins Kubernetes Plugin
 
     1. In your Jenkins, go to "Settings" and select "Manage plugins".
@@ -150,3 +152,7 @@ After all these steps are done, you can create a pipeline with the example below
     }
 
 Please replace XX... with your AWS Account ID.
+
+---
+
+Bonus task: Deploy this new container image in your EKS cluster.
